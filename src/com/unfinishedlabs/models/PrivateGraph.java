@@ -4,6 +4,7 @@ import com.unfinishedlabs.Graph;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PrivateGraph implements Graph {
     private int ownerMsaId;
@@ -45,5 +46,15 @@ public class PrivateGraph implements Graph {
     @Override
     public List<Connection> getConnections() {
         return new ArrayList<>();
+    }
+
+    @Override
+    public void updatePriKey(int pageNumber, KeyPair newPriKey) throws Error { }
+
+    @Override
+    public void updateEncryptionKey(int pageNumber, KeyPair newEncryptionKey) throws Error { }
+
+    @Override
+    public void setPriKeys(Map<Integer, Byte[]> priMap) throws Error {
     }
 }

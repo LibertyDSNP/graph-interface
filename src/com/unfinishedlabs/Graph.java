@@ -2,9 +2,11 @@ package com.unfinishedlabs;
 
 import com.unfinishedlabs.models.Connection;
 import com.unfinishedlabs.models.ConnectionType;
+import com.unfinishedlabs.models.KeyPair;
 import com.unfinishedlabs.models.Page;
 
 import java.util.List;
+import java.util.Map;
 
 public interface Graph {
     /**
@@ -47,4 +49,20 @@ public interface Graph {
      * Get all connections in the graph
      */
     List<Connection> getConnections();
+
+    /**
+     * Changing PRI key used in the page (should be called after PRI key rotation)
+     */
+    void updatePriKey(int pageNumber, KeyPair newPriKey) throws Error;
+
+    /**
+     * Changing Encryption key used in the page (should be called for rotating used encryption key)
+     */
+    void updateEncryptionKey(int pageNumber, KeyPair newEncryptionKey) throws Error;
+
+    /**
+     * Set PRI public keys for connections (only required for updates to graph)
+     * priMap is a map between msa_id to pri public key
+     */
+    void setPriKeys(Map<Integer, Byte[]> priMap) throws Error;
 }
